@@ -1,3 +1,7 @@
+"""
+Redovisad: 2025-03-28
+"""
+
 import turtle
 import random
 
@@ -9,11 +13,13 @@ offset_L = L/4
 #Lista på olika färger (Kan lägga till mer om man vill)
 lst_colours = ['blue','green','red','yellow','black','purple','orange']
 
+#Hoppar till x, y utan att rita.
 def jump(t, x, y):
     t.penup()
-    t.goto(x, y)
+    t.goto(x - l, y - l)
     t.pendown()
 
+#Skapar turtle
 def make_turtle(x, y):
     t = turtle.Turtle()
     t.speed(0)
@@ -36,7 +42,7 @@ def square(x0, y0, length, color):
 #Den stora kvadraten
 square(0, 0, L,color="")
 
-#Ett offset på vart de små trianglarna ska placeras
+#Ett offset på vart de små kvadraterna ska placeras
 corner_offset = [(-offset_L, -offset_L), (L - offset_L, -offset_L), (-offset_L, L - offset_L), (L - offset_L, L - offset_L)]
 
 for x, y in corner_offset:
