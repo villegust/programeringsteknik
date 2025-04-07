@@ -1,4 +1,7 @@
 def extended_list(x, n):
+    """
+    Funktion som skapar en lista där de element utanför listan är de första och sista index i listan.
+    """
     lst = []
     for e in x:
         lst.append(e)
@@ -10,15 +13,25 @@ def extended_list(x, n):
     return lst
 
 def smooth_a(x, n):
+    """
+    Returnerar en utjämnad version av listan x med glidande medelvärde över 2n + 1 värden.
+    Listan utökas först i kanterna med hjälp av extended_list.
+    """
     res = []
-    y = extended_list(x, n)
+    extend_lst = extended_list(x, n)
 
-    for i in range(n, len(y) - n):
-        res.append(sum(y[i-n:i+1+n])/ (2*n + 1))
+    for i in range(n, len(extend_lst) - n):
+        res.append(sum(extend_lst[i - n:i + n + 1])/ (2*n + 1))
 
     return res
 
 def smooth_b(x, n):
+    """
+    Funktion som utför en medelvärdesutjämning på en lista x.
+    
+    För varje element i listan beräknas medelvärdet av elementet själv samt n element före
+    och n element efter (så långt som möjligt inom listans gränser)
+    """
     res = []
 
     for i in range(len(x)):
@@ -27,6 +40,9 @@ def smooth_b(x, n):
     return res
 
 def round_list(a_list, ndigits):
+    """
+    Funktion som avrundar till "n" decimaler.
+    """
     res = []
     for i in a_list:
         res.append(round(i, ndigits))
