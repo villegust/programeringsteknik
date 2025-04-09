@@ -1,3 +1,7 @@
+"""
+Redovisad: 2025-04-09
+"""
+
 def extended_list(x, n):
     """
     Funktion som skapar en lista där de element utanför listan är de första och sista index i listan.
@@ -18,10 +22,10 @@ def smooth_a(x, n):
     Listan utökas först i kanterna med hjälp av extended_list.
     """
     res = []
-    extend_lst = extended_list(x, n)
+    extended_lst = extended_list(x, n)
 
-    for i in range(n, len(extend_lst) - n):
-        res.append(sum(extend_lst[i - n:i + n + 1])/ (2*n + 1))
+    for i in range(n, len(extended_lst) - n):
+        res.append(sum(extended_lst[i - n:i + n + 1])/ (2*n + 1))
 
     return res
 
@@ -36,7 +40,7 @@ def smooth_b(x, n):
 
     for i in range(len(x)):
         res.append(sum(x[max(0, i - n):min(len(x), i + n + 1)]) / (min(len(x), i + n + 1) - max(0, i - n)))
-
+    
     return res
 
 def round_list(a_list, ndigits):
