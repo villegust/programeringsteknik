@@ -22,7 +22,6 @@ with open(filename, "r", encoding='utf8') as text_file:
 wordlist = re.findall(r"[a-zA-ZåäöÅÄÖ]+", text)
 
 #Splitar upp texten och ränkar alla antal ord i "split_text" 
-word_counts = word_count(wordlist)
 
 common_word= int(input("Hur många av de vanligaste orden vill du se?: "))
 rare_word= int(input("Hur många av de ovanligaste orden vill du se?: "))
@@ -32,11 +31,11 @@ print(f"Totalt antal ord: {len(wordlist)}")
 print(f"Totalt antal unika ord: {len(set(wordlist))} \n")
 
 """
-sorted_words konverterar word_counts till en lista med key value pairs.
+sorted_words konverterar word_count(wordlist) till en lista med key value pairs.
 lambda x: x[1] sorterar efter den andra elementet, vilket är antalet.
 
 """ 
-sorted_words = sorted(word_counts.items(), key=lambda x: x[1], reverse=True)
+sorted_words = sorted(word_count(wordlist).items(), key=lambda x: x[1], reverse=True)
 
 #Loopar igenom de valigaste orden och printar dem enligt antalet man har anget i common_word
 if common_word > len(set(wordlist)) or common_word < 0:
