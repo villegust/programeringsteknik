@@ -33,7 +33,7 @@ sorted_words = sorted(word_count(wordlist).items(), key=part2, reverse=True)
 
 #Loopar igenom de valigaste orden och printar dem enligt antalet man har anget i common_word
 print(f"De {common_word} vanligaste orden var (antal förekommer inom parantes): ")
-for i in range(0, common_word):
+for i in range(common_word):
     word, count = sorted_words[i]
     print(f"{i + 1}. {word:<20} ({count})")
 
@@ -41,6 +41,6 @@ print("\n")
 
 #Loopar igenom de ovaligaste orden och printar dem enligt antalet man har anget i rare_word
 print(f"De {rare_word} ovanligaste orden var (antal förekommer inom parantes): ")
-for i in range(0, rare_word):
+for i in range(rare_word):
     word, count = sorted_words[-(i + 1)]
     print(f"{i + 1}. {word:<20} ({count})")
