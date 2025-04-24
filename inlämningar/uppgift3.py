@@ -13,6 +13,8 @@ def word_count(t):
 
     return count
 
+def part2(element):
+    return element[1]
 
 with open("dikt.txt", "r", encoding='utf8') as text_file:
     text = text_file.read().lower()
@@ -34,7 +36,7 @@ sorted_words konverterar word_count(wordlist) till en lista med key value pairs.
 lambda x: x[1] sorterar efter den andra elementet, vilket är antalet.
 
 """ 
-sorted_words = sorted(word_count(wordlist).items(), key=lambda x: x[1], reverse=True)
+sorted_words = sorted(word_count(wordlist).items(), key=part2, reverse=True)
 
 #Loopar igenom de valigaste orden och printar dem enligt antalet man har anget i common_word
 
