@@ -67,7 +67,7 @@ Uppgift 5 del b
 """
 
 # def resistance(lst):
-#     return 
+#     return 1/sum(1/i for i in lst)
 
 # rList1 = [3000, 3000, 3000]
 # rList2 = [1000, 2000, 3000]
