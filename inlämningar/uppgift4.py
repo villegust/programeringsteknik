@@ -9,16 +9,13 @@ def load_csv(filename):
 
     with open(filename, "r") as csvFile:
         reader = csv.reader(csvFile)
+        next(reader)
         for row in reader:
             rader.append([cell.lower() for cell in row])
 
         result = {p[1]: list(map(float, p[3:])) for p in rader}
 
     return result
-
-def filter_nordic_data(data):
-    nordic_countries = ["dnk", "fin", "isl", "nor", "swe"]
-    return {country: data[country][2:len(time) + 2] for country in nordic_countries if country in data}
 
 def extended_list(x, n):
     """
@@ -61,41 +58,17 @@ def smooth_b(x, n):
     
     return res
 
-file = "CO2Emissions_filtered.csv"
-data = load_csv(file)
-nordic_data = filter_nordic_data(data)
+data = load_csv("CO2Emissions_filtered.csv")
 
-for country, values in nordic_data.items():
-    print(f"{country} : {values} \n")
-    print(f"{country} Smooth_a values: {smooth_a(values, 1)} \n")
-    print(f"{country} Smooth_b values: {smooth_b(values, 1)} \n")
+countries = [["dnk", "blue"], ["fin", "orange"], ["isl", "green"], ["nor", "red"], ["swe", "purple"]]
+fig, ax = plt.subplots()
 
-    """
-    Massa matplotlib bullshit
-    """
+for i in countries:
+    ax.plot(data[i[0]], linestyle=":", color=i[1])
+    ax.plot(smooth_a(data[i[0]], 1), linestyle="-", color=i[1])
+    ax.plot(smooth_b(data[i[0]], 1), linestyle="--", color=i[1])
 
-    
-    smooth_a_vals = smooth_a(values, 1)
-    smooth_b_vals = smooth_b(values, 1)
 
-    def fix_length(lst, target=55):
-        if len(lst) < target:
-            return lst + [lst[-1]] * (target - len(lst))
-        else:
-            return lst[:target]
+ax.set(xlabel="Year", ylabel="CO2 Emissions (kt)", title="Yearly Emissions of CO2 in the Nordic Countries")
 
-    values_fixed = fix_length(values)
-    smooth_a_fixed = fix_length(smooth_a_vals)
-    smooth_b_fixed = fix_length(smooth_b_vals)
-
-    plt.plot(time, smooth_a_fixed, label=f"{country}")
-    plt.plot(time, values_fixed, linestyle="--")
-    plt.plot(time, smooth_b_fixed, linestyle=":")
-
-plt.title("CO₂ Emissions for Nordic Countries (1960–2014)")
-plt.xlabel("Year")
-plt.ylabel("CO₂ Emissions")
-plt.legend()
-plt.grid(True)
-plt.tight_layout()
 plt.show()
