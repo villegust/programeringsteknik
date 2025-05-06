@@ -1,9 +1,6 @@
 import csv
 import matplotlib.pyplot as plt
 
-#Global variabel som används av olika funktioner.
-time = list(range(1960, 2015))
-
 def load_csv(filename):
     rader = []
 
@@ -61,6 +58,7 @@ def smooth_b(x, n):
 data = load_csv("CO2Emissions_filtered.csv")
 
 countries = [["dnk", "blue"], ["fin", "orange"], ["isl", "green"], ["nor", "red"], ["swe", "purple"]]
+time = list(range(1960, 2015))
 fig, ax = plt.subplots()
 
 for i in countries:
