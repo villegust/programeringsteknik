@@ -63,8 +63,8 @@ fig, ax = plt.subplots()
 
 for i in countries:
     ax.plot(data[i[0]], linestyle=":", color=i[1])
-    ax.plot(smooth_a(data[i[0]], 1), linestyle="-", color=i[1])
-    ax.plot(smooth_b(data[i[0]], 1), linestyle="--", color=i[1])
+    ax.plot(smooth_a(data[i[0]], 5), linestyle="-", color=i[1])
+    ax.plot(smooth_b(data[i[0]], 5), linestyle="--", color=i[1])
 
 
 ax.set(xlabel="Year", ylabel="CO2 Emissions (kt)", title="Yearly Emissions of CO2 in the Nordic Countries")
