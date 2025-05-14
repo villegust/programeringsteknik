@@ -26,7 +26,7 @@ class Temperature:
         """
         Utskriften ger filens namn samt hur många datapunkter den har.
         """
-        return f"Filens namn: {self.filename} och den har {len(self.temp_data)} st datapunkter. \n"
+        return f"Filens namn: {self.filename} och den har {self.number_of_datapoints} st datapunkter. \n"
 
     
     def smoothing(self, hours):
